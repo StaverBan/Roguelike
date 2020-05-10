@@ -13,25 +13,27 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 direction = target.position - enemyTarget.position;
-
-        float lenght = direction.magnitude;
-        direction.Normalize();
-
-        Vector3 middlePosition=target.position-direction*lenght/2;
         Vector3 targetPosition;
         float MoveSpeed;
 
-        if (lenght < 10)
+        if (enemyTarget)
         {
+            Vector3 direction = target.position - enemyTarget.position;
+
+            float lenght = direction.magnitude;
+            direction.Normalize();
+
+            Vector3 middlePosition = target.position - direction * lenght / 2;
+
             targetPosition = middlePosition + offset;
-            MoveSpeed = speed* 2;
+            MoveSpeed = speed * 2;
         }
         else
         {
             targetPosition = target.position + offset;
-            MoveSpeed = speed ;
+            MoveSpeed = speed;
         }
+
 
 
         transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * MoveSpeed);
