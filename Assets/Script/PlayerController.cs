@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public Vector2 direction;
 
-    public void Update()
+    public void FixedUpdate()
     {
       //  direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
